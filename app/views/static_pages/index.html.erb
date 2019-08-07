@@ -1,0 +1,14 @@
+<%= content_tag(:h1, "Search Flickr Photos") %>
+
+<%= form_tag("/index", method: "get") do %>
+  <%= label_tag(:user_id, "Enter a Flickr User ID...") %><br />
+  <%= text_field_tag(:user_id) %><br />
+  <%= submit_tag("Find photos!") %>
+<% end %>
+
+<% if @photos && @photos.any? %>
+  <%= content_tag(:h2, "#{@username}'s Flickr photos") %>
+  <% @photos.each do |photo| %>
+    <%= image_tag(photo.url_m) %>
+  <% end %>
+<% end %>
